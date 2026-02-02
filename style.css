@@ -1,0 +1,320 @@
+/* CSS Custom Properties (Color Palette) */
+:root {
+    --grey: #7a7a7a;
+    --yellow: #f4e400;
+    --orange: #ff8757;
+    --light-bg: #f0f8ff;
+    --white: #ffffff;
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: var(--light-bg);
+    color: #333;
+    line-height: 1.6;
+}
+
+
+   /* NAVBAR STYLES */
+
+.header {
+    background-color: var(--grey);
+    width: 100%;
+}
+
+.navbar {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--grey);
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav-link {
+    display: block;
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Underline effect on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--yellow);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Active state - Yellow color */
+.nav-link.active {
+    color: var(--yellow);
+}
+
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: var(--yellow);
+    transform: translateY(-2px);
+}
+
+.nav-link:focus {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+ /* MAIN CONTENT - GALLERY SECTION */
+
+
+.main-content {
+    padding: 2.5rem;
+}
+
+.gallery-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Gallery Item */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Image Hover Effects */
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.gallery-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+  /* FEATURE SECTION (Orange Card) */
+
+.feature-section {
+    background-color: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 400px;
+    transition: background-color 0.4s ease;
+}
+
+/* Active background colors for button click */
+.feature-section.bg-blue {
+    background-color: #4a90d9;
+}
+
+.feature-section.bg-green {
+    background-color: #5cb85c;
+}
+
+.feature-section.bg-purple {
+    background-color: #9b59b6;
+}
+
+.feature-section.bg-pink {
+    background-color: #e91e63;
+}
+
+.feature-section.bg-orange {
+    background-color: var(--orange);
+}
+
+.feature-card {
+    background-color: var(--grey);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    max-width: 280px;
+    border-radius: 4px;
+}
+
+.feature-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.feature-text {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.feature-button {
+    background-color: var(--white);
+    color: #333;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.feature-button:hover {
+    background-color: var(--yellow);
+    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature-button:focus {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+.feature-button:active {
+    background-color: var(--orange);
+    color: var(--white);
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   RESPONSIVE DESIGN - TABLET (768px - 1023px)
+   ============================================= */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .gallery-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Feature section spans full width on tablet */
+    .feature-section {
+        grid-column: 1 / -1;
+    }
+}
+
+/* =============================================
+   RESPONSIVE DESIGN - MOBILE (< 768px)
+   ============================================= */
+@media screen and (max-width: 767px) {
+    /* Navbar becomes vertical */
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.75rem 0;
+        width: 100%;
+    }
+
+    /* Adjust header background for mobile */
+    .header {
+        background-color: var(--light-bg);
+    }
+
+    .nav-link {
+        color: #333;
+    }
+
+    .nav-link.active {
+        color: var(--yellow);
+    }
+
+    /* Main content adjustments */
+    .main-content {
+        padding: 1rem;
+    }
+
+    /* Gallery becomes single column on mobile */
+    .gallery-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    /* Images side by side */
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2) {
+        grid-column: auto;
+    }
+
+    /* Feature section full width below images */
+    .feature-section {
+        grid-column: 1 / -1;
+        min-height: 300px;
+        padding: 1.5rem;
+    }
+
+    .feature-card {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+    .gallery-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1;
+    }
+
+    .gallery-image {
+        height: 100%;
+    }
+}
+
+
+   /* UTILITY - Prevent horizontal scroll */
+
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/*To check images are responsive and don't break layout */
+img {
+    max-width: 100%;
+    height: auto;
+}
